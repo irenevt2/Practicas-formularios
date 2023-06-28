@@ -1,0 +1,93 @@
+Crea un formulario con los siguientes campos:
+    * Título (requerido)
+    * Descripción (requerido, longitud mínima de 10 caracteres)
+    * Fecha de inicio (requerido, fecha y hora mínima de hoy)
+    * Fecha de finalización (opcional,
+      debe ser posterior a la fecha de inicio si se proporciona)
+
+<h3 class="text-center">Registro de la Tarea</h3>
+<form [formGroup]="registroTarea" (ngSubmit)="guardar()">
+    <div class="mb-3">
+        <label for="title" class="form-label">Título: </label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="title" 
+            name="title" 
+            formControlName="title"
+        >
+        <div *ngIf="titleControl?.invalid && (titleControl?.dirty || titleControl?.touched)">
+            <div *ngIf="titleControl?.errors?.['required']">
+                <p class="form-text text-danger">El título es requerido</p>
+            </div>
+            <div *ngIf="titleControl?.errors?.['sinA']">
+                <p class="form-text text-danger">No tiene A</p>
+            </div>
+            <div *ngIf="titleControl?.errors?.['angular']">
+                <p class="form-text text-danger">No tiene angular</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Descripcion: </label>
+        <textarea 
+            name="description" 
+            id="description" 
+            class="form-control" 
+            cols="20" rows="5" 
+            formControlName="description">
+        </textarea>
+        <div *ngIf="descriptionControl?.invalid && (descriptionControl?.dirty || descriptionControl?.touched)">
+            <div *ngIf="descriptionControl?.errors?.['required']">
+                <p class="form-text text-danger">La descripcion es requerida</p>
+            </div>
+            <div *ngIf="descriptionControl?.errors?.['minlength']">
+                <p class="form-text text-danger">La logintud mínima de carateres es 10</p>
+            </div>
+        </div>
+        <div *ngIf="registroTarea.errors?.['noTitle']">
+            <p class="form-text text-danger">No tiene el texto del titulo</p>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="startDate" class="form-label">Fecha de Inicio: </label>
+        <input 
+            type="date"
+            [min]="now"
+            id="startDate"
+            name="startDate"
+            class="form-control"
+            formControlName="startDate"
+        >
+        <div *ngIf="startDateControl?.invalid && (startDateControl?.dirty || startDateControl?.touched)">
+            <div *ngIf="startDateControl?.errors?.['required']">
+                <p class="form-text text-danger">La fecha de inicio es requerida</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="finishDate" class="form-label">Fecha de finalización (opcional): </label>
+        <input 
+            type="date"  
+            
+            id="finishDate" name="finishDate" 
+            class="form-control" 
+            formControlName="finishDate"
+        >
+        <div *ngIf="finishDateControl?.invalid && (finishDateControl?.dirty || finishDateControl?.touched)">
+            <div *ngIf="finishDateControl?.errors?.['required']">
+                <p class="form-text text-danger">La fecha final es requerida</p>
+            </div>
+        </div>
+        <div *ngIf="registroTarea.errors?.['posterior']">
+            <p class="form-text text-danger">La fecha final debe ser posterior al a fecha de inicio</p>
+        </div>
+    </div>
+    <div class="boton">
+        <button class="btn btn-primary">Guardar</button>
+    </div>
+</form>

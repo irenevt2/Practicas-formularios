@@ -1,0 +1,13 @@
+.asiento{
+    height: 100px;
+    width: 100px;
+    border:1px solid green;
+    background-color: yellow;
+    margin: 2rem;
+    cursor: pointer;
+
+    &.ocupado{
+        background: red;
+    }
+}
+

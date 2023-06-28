@@ -1,0 +1,57 @@
+<h3 class="text-center mb-3 mt-3">Formulario de Registro</h3>
+<form [formGroup]="formularioRegistro" (ngSubmit)="guardar()">
+    <div class="mb-3">
+        <label class="form-label" for="name">Nombre: </label>
+        <input class="form-control" type="text" id="name" name="name" formControlName="name">
+        <!-- {{name?.invalid }} -->
+        <div *ngIf="nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)">
+            <div *ngIf="nameControl?.errors?.['required']">
+                <p class="form-text">El nombre es obligatorio</p>
+            </div>
+        </div>
+        <!-- <div *ngIf="formularioRegistro.get('name').invalid && (formularioRegistro.get('name').dirty || formularioRegistro.get('name').touched)">
+            <div *ngIf="formularioRegistro.get('name').errors.required">
+                <p class="form-text">El nombre es obligatorio</p>
+            </div>
+        </div> -->
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="email">E-mail: </label>
+        <input class="form-control" type="email" id="email" name="email" formControlName="email">
+        <div *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)">
+            <div *ngIf="emailControl?.errors?.['required']">
+                <p class="form-text">El email es obligatorio</p>
+            </div>
+            <div *ngIf="emailControl?.errors?.['email'] ">
+                <p class="form-text">El correo debe ser válido @ </p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="age">Edad: </label>
+        <input class="form-control" type="number" id="age" name="age" formControlName="age">
+        <div *ngIf="ageControl?.invalid && (ageControl?.dirty || ageControl?.touched)">
+            <div *ngIf="ageControl?.errors?.['min'] || ageControl?.errors?.['max']" >
+                <p class="form-text">La edad debe minimo 18 y máximo 99 años</p>
+            </div>
+            <div *ngIf="ageControl?.errors?.['required']">
+                <p class="form-text">La edad es obligatoria</p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="password">Contraseña: </label>
+        <input class="form-control" type="password" id="password" name="password" formControlName="password">
+        <div *ngIf="passwordControl?.invalid &&  (passwordControl?.dirty) || passwordControl?.touched">
+            <div *ngIf="passwordControl?.errors?.['required']">
+                <p class="form-text">La contraseña es obligatoria</p>
+            </div>
+            <div *ngIf="passwordControl?.errors?.['minlength'] || passwordControl?.errors?.['maxlength']">
+                <p class="form-text">La contraseña debe tener mínimo 4 caracteres y máximo 10 caracteres</p>
+            </div>
+        </div>
+    </div>
+    <div class="boton">
+        <button class="btn btn-primary"> Guardar </button>
+    </div>
+</form>

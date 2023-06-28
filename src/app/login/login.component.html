@@ -1,0 +1,67 @@
+<!-- <div class="fondo">
+    <div class="logo text-center">
+      <img src="../assets/suite-logo.png" alt="">
+    </div>
+  
+    <div class="carrousel">
+      <div class="sistemas" *ngFor="let sistema of sistemas" placement="top" ngbTooltip="{{sistema.name}}">
+        <div class="icono">
+          <img src="{{sistema.imgUrl}}" alt="">
+        </div>
+      </div>
+    </div>
+  
+    <main>
+      
+      <app-login></app-login>
+    </main>
+    <footer class="text-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/5957/5957125.png" alt="">
+      <span>Admin Suite</span>
+    </footer>
+  </div> -->
+
+
+<div class="fondo">
+    
+  
+    <div class="carrousel">
+      <div class="sistemas" *ngFor="let sistema of sistemas" placement="top" ngbTooltip="{{sistema.name}}">
+        <div class="icono">
+          <img src="{{sistema.imgUrl}}" alt="">
+        </div>
+      </div>
+    </div>
+
+<div class="_container-login">
+    <header>
+        <h1 class="text-center">Iniciar Sesión</h1>
+    </header>
+    <main>
+        <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <div class="grupo">
+                <input type="text" class="form-control" id="usuario" name="usuario">
+                <div class="icono"><i class="icon ion-md-person"></i></div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <div class="grupo">
+                <input type="password" class="form-control" id="password" name="password">
+                <div class="icono"><i class="icon ion-md-eye"></i></div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center">
+        <button class="btn btn-primary">
+            Iniciar Sesión
+        </button><br>
+        <a href="">Acceder con otra cuenta</a>
+    </footer>
+</div>
+<footer class="text-center">
+  <img src="https://cdn-icons-png.flaticon.com/512/5957/5957125.png" alt="">
+  <span>Admin Suite</span>
+</footer>
+</div>

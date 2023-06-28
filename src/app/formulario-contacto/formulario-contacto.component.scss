@@ -1,0 +1,15 @@
+form{
+    padding: 2rem 2rem;
+    width: 500px;
+    margin: 0 auto;
+    border: 1px solid rgb(223, 223, 223);
+    box-shadow: 2px 5px 8px #ebebeb;
+    border-radius: 12px;
+    p{
+        color: rgb(255, 131, 131);
+    }
+    .boton{
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,29 @@
+._container{
+    margin: auto;
+    width: 400px;
+    form{
+        display: flex;
+        // justify-content: space-around;
+        .campo{
+            margin-right: 20px;
+        }
+    }
+    .contador{
+        display: flex;
+        gap: 10px;
+    }
+    .tiempo{
+        border: 1px solid rgb(208, 208, 208);
+        border-radius: 50%;
+        height: 4rem;
+        width: 4rem;
+        font-family: 'Wallpoet', cursive;
+        text-align: center;
+        line-height: 1.8;
+        font-size: 2em;
+        background: rgb(11, 37, 40);
+        color: white;
+        // margin: auto, 0;
+    }
+
+}

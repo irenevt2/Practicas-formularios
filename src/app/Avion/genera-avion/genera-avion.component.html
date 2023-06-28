@@ -1,0 +1,43 @@
+<p>genera-avion works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form action="">
+                <div>
+                    <label for="asientos" class="forrm-label mb-3">Cuantas asientos tiene tu avion?</label> <br/>
+                    <input 
+                        type="text" 
+                        appInputNumber
+                        name="asientos" 
+                        id="asientos"
+                        class="form-control mb-3"
+                        [(ngModel)]= cantidad
+                        (keyup.enter)="generarAsiento()"
+                    >
+                </div>
+                <button (click)="generarAsiento()" class="btn btn-primary mb-3">Generar asiento</button>
+                
+            </form>
+        </div>
+        
+        <!-- <div class="container">
+            <div class="fila">
+                A    B    C    D...
+            </div>
+            <div class="columna">
+                1    2    3    4...
+            </div>
+        </div> -->
+        
+        <div class="col-8">
+            <div class="asientos-container">
+                <div class="asiento" *ngFor="let asiento of asientos" (click)="cambiar(asiento)" [ngClass]="{'ocupado': asiento.estado == '1' }">
+                   {{asiento.codigo}} {{asiento.estado}}
+                   <div *ngIf="asiento.estado == '0'">Libre</div>
+                   <div *ngIf="asiento.estado == '1'">Ocupado</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

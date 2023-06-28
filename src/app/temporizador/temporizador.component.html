@@ -1,0 +1,42 @@
+<div class="_container">
+    <h3 class="mt-3"> Temporizador </h3>
+    <form class="mt-5">
+        <div class="campo" >
+            <input type="number" class="form-control" [(ngModel)]="tiempo_segundo" name="number" placeholder="Tiempo en segundos">
+        </div>
+        <button class="btn btn-primary" type="button" (click)="iniciar()" >Iniciar</button>
+    </form>
+
+    <div class="contador mt-3">
+        <div class="tiempo hora">
+            {{hora}}
+        </div>
+        <div class="tiempo minuto">
+            {{minuto}}
+        </div>
+        <div class="tiempo segundo">
+            {{segundo}}
+        </div>
+    </div>
+
+    <div class="mensaje" *ngIf="mostrarMensaje">
+        <p>Ha finalizado</p>
+    </div>
+</div>
+
+
+<!-- ngModel -->
+<!-- <label for="aceptoTerminos">Acepto los terminos y condiciones</label>
+<input type="checkbox" [(ngModel)]="aceptoTerminos" id="aceptoTerminos">
+<p>{{aceptoTerminos}}</p> -->
+
+<!-- Seleccion de pais -->
+<!-- <label for="pais">Pais:</label>
+<select name="pais" id="pais" [(ngModel)]="paisSeleccionado">
+    <option value="Perú">Perú</option>
+    <option value="Brasil">Brasil</option>
+    <option value="Argentina">Argentina</option>
+    <option value="Bolivia">Bolivia</option>
+</select> -->
+<!-- 
+<p>El pais seleccionado es: {{paisSeleccionado}}</p> -->

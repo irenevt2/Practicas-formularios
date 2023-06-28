@@ -1,0 +1,153 @@
+Ruc:
+	tiene que tener 11 dígitos
+	tiene que ser numerico
+	requerido
+
+Fecha de emision:
+	maximo 2 años antes de la fecha actual
+	requerido
+    y que no se mayor a la fecha actual
+
+Tipo de documento:
+	Puede ser Factura
+	boleta
+	Nota de credito
+	Nota de debito
+
+Serie:
+	4 caracteres máximo
+	requerido
+	Alfanumerico
+
+Numero:
+	maximo 11
+	numerico
+	requerido
+
+Monto:
+	hasta 3 decimales
+	solo numero
+	requerido
+
+Boton Consultar
+
+
+<h3 class="text-center mb-3">Consulte su comprobante</h3>
+<form [formGroup]="formConsulta" (ngSubmit)="consultar()">
+    <div class="mb-3">
+        <label for="ruc" class="form-label">Ruc del Emisor: </label>
+        <input 
+            type="text"
+            autocomplete="off"
+            id="ruc"
+            name="ruc"
+            class="form-control"
+            maxlength="11"
+            appInputNumber
+            formControlName="ruc"
+        >
+        <div *ngIf="rucControl?.invalid && (rucControl?.dirty || rucControl?.touched)">
+            <div *ngIf="rucControl?.errors?.['required']">
+                <p class="form-text">El RUC del emisor es requerido</p>
+            </div>
+            <div *ngIf="rucControl?.errors?.['minlength']">
+                <p class="form-text">El RUC debe tener 11 dígitos</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="fechaEmision" class="form-label">Fecha de Emision: </label>
+        <input 
+            type="date"
+            id="fechaEmision"
+            name="fechaEmision"
+            [min]="minDate"
+            [max]="now"
+            class="form-control"
+            formControlName="fechaEmision"
+        >
+        <div *ngIf="fechaEmisionControl?.invalid && (fechaEmisionControl?.dirty || fechaEmisionControl?.touched)">
+            <div *ngIf="fechaEmisionControl?.errors?.['required']">
+                <p class="form-text">La fecha de emision es requerida</p>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="tipoDoc">Tipo de Documento: </label>
+        <select 
+            name="tipoDoc" 
+            id="tipoDoc"
+            class="form-select"
+            formControlName="tipoDoc"      
+        >
+            <option *ngFor="let tipo of tipoDocumentos" value="{{tipo.codigo}}">{{tipo.denominacion}}</option>
+        </select>
+    </div>
+
+    <div class="row">
+        <div class="mb-3">
+            <label for="serie">Serie: </label>
+            <input 
+                type="text"
+                id="serie"
+                name="serie"
+                class="form-control"
+                formControlName="serie"
+                autocomplete="off"
+                maxlength="4"
+            >
+            <div *ngIf="serieControl?.invalid && (serieControl?.dirty || serieControl?.touched)">
+                <div *ngIf="serieControl?.errors?.['required']">
+                    <p class="form-text">La serie es requerida</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="numero">Número: </label>
+            <input 
+                type="text"
+                id="numero"
+                name="numero"
+                maxlength="11"
+                appInputNumber
+                class="form-control"
+                formControlName="numero"
+                autocomplete="off"
+            >
+            <div *ngIf="numeroControl?.invalid && (numeroControl?.dirty || numeroControl?.touched)">
+                <div *ngIf="numeroControl?.errors?.['required']">
+                    <p class="form-text">El numero es requerido</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="monto">Monto: </label>
+            <input 
+                type="text"
+                id="monto"
+                name="monto"
+                step="0.01"
+                class="form-control"
+                formControlName="monto"
+                
+            >
+            <div *ngIf="montoControl?.invalid && (montoControl?.dirty || montoControl?.touched)">
+                <div *ngIf="montoControl?.errors?.['required']">
+                    <p class="form-text">El monto es requerido</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="boton">
+        <button class="btn btn-primary">Consultar</button>
+    </div>
+    
+</form>

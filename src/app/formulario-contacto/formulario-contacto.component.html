@@ -1,0 +1,47 @@
+
+<h3 class="mt-4 text-center">Formulario de Contacto</h3>
+<form [formGroup]="formularioContacto" (ngSubmit)="guardar()">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre: </label>
+        <input type="text" class="form-control" id="name" name="name" formControlName="name">
+        <div *ngIf="nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)">
+            <div *ngIf="nameControl?.errors?.['required']" >
+                <p class="form-text">El nombre es obligatorio</p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">E-mail: </label>
+        <input type="email" class="form-control" id="email" name="email" formControlName="email">
+        <div *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)">
+            <div *ngIf="emailControl?.errors?.['required']" >
+                <p class="form-text">El e-mail es obligatorio</p>
+            </div>
+            <div *ngIf="emailControl?.errors?.['email']">
+                <p class="form-text">El e-mail debe ser válido @</p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="subject" class="form-label">Nombre: </label>
+        <input type="text" class="form-control" id="subject" name="subject" formControlName="subject">
+        <!-- <textarea name="subject" id="subject" class="form-control" cols="30" rows="10" formControlName="subject"></textarea> -->
+        <div *ngIf="subjectControl?.invalid && (subjectControl?.dirty || subjectControl?.touched)">
+            <div *ngIf="subjectControl?.errors?.['required']">
+                <p class="form-text">El asunto es obligatorio</p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="message" class="form-label">Mensaje: </label>
+        <textarea name="message" id="message" class="form-control" cols="20" rows="4" formControlName="message"></textarea>
+        <div *ngIf="messageControl?.invalid && (messageControl?.dirty || messageControl?.touched)">
+            <div *ngIf="messageControl?.errors?.['required']" >
+                <p class="form-text">El mensaje es obligatorio</p>
+            </div>
+        </div>
+    </div>
+    <div class="boton">
+        <button class="btn btn-primary">Guardar</button>
+    </div>
+</form>

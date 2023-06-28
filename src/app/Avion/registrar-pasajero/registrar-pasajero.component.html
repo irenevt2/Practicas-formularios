@@ -1,0 +1,66 @@
+
+<h4>Pasajero</h4>
+<form action="">
+  <!-- nombre - apellido -->
+  <div class="row mb-3">
+    <div class="col-md">
+      <label class="form-label" for="nombre"></label>
+      <input 
+        type="text" 
+        placeholder="Nombre"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+      >
+    </div>
+    <div class="col-md">
+      <label class="form-label" for="apellido"></label>
+      <input 
+        type="text" 
+        placeholder="Apellido"
+        class="form-control"
+        id="apellido"
+        name="apellido"
+      >
+    </div>
+  </div>
+  <!-- nacimiento - genero -->
+  <div class="row mb-3">
+    <div class="col-md">
+      <label class="form-text" for="fechaNacimiento">Fecha de Nacimiento</label>
+      <input 
+        type="date" 
+        placeholder="dd-mm-aaa"
+        class="form-control"
+        id="fechaNacimiento"
+        name="fechaNacimiento"
+      >
+    </div>
+    <div class="col-md">
+      <label class="form-text" for="genero">Género</label>
+      <select name="genero" id="genero" class="form-select">
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+      </select>
+    </div>
+  </div>
+  <!-- nacionalidad -->
+  <div class="row mb-3">
+    <div class="col-md">
+      <label for="nacionalidad" class="form-text">Nacionalidad</label>
+      <select name="nacionalidad" id="nacionalidad" class="form-select">
+        <option *ngFor="let pais of paises" value="{{pais.nombre}}"> <img [src]="pais.bandera" alt="{{pais.nombre}}"> {{pais.nombre}}</option>
+      </select>
+    </div>
+    <div class="col-md"></div>
+  </div>
+</form>
+  
+
+
+  <!-- <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input matInput placeholder="Placeholder">
+    </mat-form-field>
+  </p> -->

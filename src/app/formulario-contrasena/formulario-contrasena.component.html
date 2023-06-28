@@ -1,0 +1,87 @@
+<p> *Nombre (requerido)
+    *Email (requerido, formato de email válido)
+    *Contraseña (requerido, longitud mínima de 8 caracteres)
+    *Confirmar contraseña (requerido, debe coincidir con la contraseña)</p>
+
+<h3 class="text-center mt-3 mb-3">Formulario de confirmacion de contraseña</h3>
+<form [formGroup]="formPassword" (ngSubmit)="guardar()">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre: </label>
+        <input 
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            formControlName="name"
+        >
+        <div *ngIf="nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)">
+            <div *ngIf="nameControl?.errors?.['required']">
+                <p class="form-text"> El nombre es requerido </p>
+            </div>      
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="email">E-mail: </label>
+        <input 
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            formControlName="email"
+        >
+        <div *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)">
+            <div *ngIf="emailControl?.errors?.['required']">
+                <p class="form-text">El e-mail es requerido</p>
+            </div>
+            <div *ngIf="emailControl?.errors?.['email']">
+                <p class="form-text">Tiene email que tener un formato válido @</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña: </label>
+        <input 
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            formControlName="password"
+        >
+        <div *ngIf="passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)">
+            <div *ngIf="passwordControl?.errors?.['required']">
+                <p class="form-text">La contraseña es requerida</p>
+            </div>
+            <div *ngIf="passwordControl?.errors?.['minlength']">
+                <p class="form-text">La contraseña tiene que tener como minimo 4 caracteres</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3"> 
+        <label for="passwordConfirmation">Confirmacion de contraseña: </label>
+        <input 
+            type="password"
+            id="passwordConfirmation"
+            name="passwordConfirmation"
+            class="form-control"
+            formControlName="passwordConfirmation"
+        >
+        <div *ngIf="passwordConfirmationControl?.invalid && (passwordConfirmationControl?.dirty || passwordConfirmationControl?.touched)">
+            <div *ngIf="passwordConfirmationControl?.errors?.['required']">
+                <p class="form-text">La confirmacion es requerida</p>
+            </div>
+        </div>
+        <div *ngIf="formPassword.invalid && (passwordConfirmationControl?.dirty || passwordConfirmationControl?.touched)">
+            <div *ngIf="formPassword.errors?.['noConfirmation']">
+                <p class="form-text">La confirmación no concide</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="boton">
+        <button class="btn btn-primary">guardar</button>
+    </div>
+
+</form>
